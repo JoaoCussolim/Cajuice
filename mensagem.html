@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mensagem</title>
+    <link rel="stylesheet" href="/style.css">
+    <script src="/script.js" defer></script>
+</head>
+<body>
+
+    <header>
+        <div class="container-header">
+            <div id="container-logo">
+                <a href="index.html"><img id="logo" src="./assets/Logo.png"></a>
+            </div>
+            <div id="container-div-links">
+                <div id="container-links">
+                    <a class="links" href="./criadores.html">Criadores</a>
+                    <a class="links" href="./grabalos.html">Grabalos</a>
+                    <a class="links" id="linkpreenchido">Mensagem</a>
+                </div>
+            </div>
+        </div>
+    </header>
+    <div class="container-criadores">
+        <div id="container-mainText">
+            <div id="container-infoCria">
+                <div id="container-criadoresH1">
+                <h1 id="criadoresH1">Mensagem</h1>
+                </div>
+                <div class="container-divInfos">
+                    <div class="container-textoCria">
+                        <form action="https://api.sheetmonkey.io/form/64FFjYhWhXgSb4j6SsT11K" method="post"> <!-- https://docs.google.com/spreadsheets/d/1fSqmKby0J3B8Un48YmTeypjIpVrtCuAUTngx9VsSaKM/edit?pli=1#gid=0 -->
+                        <h2 class="mensagemCorTexto">Assunto Principal: </h2>
+                        <input id="tamanhoAssuntoPrincipal" name="Assunto" type="text">
+                        <h2 class="mensagemCorTexto">Detalhes: </h2>
+                        <textarea id="detalhesticket" name="Detalhes" rows="20" cols="80"></textarea>
+                        <h2></h2>
+                        <input type="submit" value="Enviar">
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+</body>
+</html>

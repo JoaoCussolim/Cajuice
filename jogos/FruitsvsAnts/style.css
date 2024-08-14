@@ -1,0 +1,15 @@
+*{
+    user-select: none;
+}
+
+body{
+    margin: 0;
+    background-color: black;
+}
+
+canvas{
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}

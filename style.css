@@ -1,0 +1,405 @@
+body{
+    height: 100vh;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    background-color: #FFD789;
+    user-select: none;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+a{
+    text-decoration: none;
+}
+
+.links{
+    font-weight: 400;
+    font-style: normal;
+    color: #6A3F21;
+    font-size: 1.5rem;
+}
+
+#linkpreenchido{
+    color: black;
+}
+
+.links:hover{
+    color: #24180F;
+}
+
+.mensagemCorTexto{
+    color: #FFA800;
+    font-size: 2rem;
+}
+
+#tamanhoAssuntoPrincipal{
+    width: 20rem;
+}
+
+#logo{
+    height: 15rem;
+    margin: -3rem 0 4rem 2rem;
+    transition-timing-function: linear;
+    transition-delay: 0.2s;
+    transition: 500ms;
+}
+
+#logo:hover{
+    height: 17rem;
+}
+
+header{
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+}
+
+#container-logo{
+    width: 100%;
+    height: 70%;
+    background-color: #24180F;
+    display: flex;
+}
+
+#container-div-links{
+    width: 100%;
+    height: 30%;
+    background-color: #FFA800;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+#container-links{
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.container-header{
+    width: 100%;
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+}
+
+.container-criadores{
+    gap: 5rem;
+    display: flex;
+    justify-content: space-around;
+}
+
+#container-mainText{
+    display: flex;
+    justify-content: center;
+    height: 42rem;
+    width: 60rem;
+    border-radius: 1rem;
+    background-color: #6A3F21;
+}
+
+#container-infoCria{
+    width: 100%; 
+    text-align: center;
+}
+
+.imagemCriadores{
+    width: 100%;
+    height: 100%;
+    border-radius: 1rem;
+}
+
+#container-designerDiv{
+    flex-direction: row-reverse;
+}
+
+.container-divInfos{
+    display: flex; 
+    flex-direction: row; 
+    margin: 1rem;
+    height: 25%;
+}
+
+.container-imagemCria{
+    width: 12rem;
+    height: 12rem; 
+    border-radius: 1rem;
+}
+
+.container-textoCria{
+    margin: 0.5rem; 
+    text-align: start;
+}
+
+#container-criadoresH1{
+    display: flex; 
+    justify-content: center; 
+    flex-direction: column; 
+    height: 5rem
+}
+
+#criadoresH1{
+    font-size: 5rem;
+    color: #FFA800;
+}
+
+.textosGrandesCria{
+    color: #FFA800;
+    font-size: 2rem;
+}
+
+.textosNormCria{
+    color: white;
+    font-size: 1.5rem;
+}
+
+.container-subTexts{
+    display: flex;
+    flex-direction: column;
+}
+
+.container-subTextsH1{
+    display: flex;
+    justify-content: center; 
+    flex-direction: column; 
+    height: 3rem
+}
+
+#container-linguagens{
+    display: flex; 
+    flex-direction: column; 
+}
+
+#container-agradecimentos{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    height: 80%;
+}
+
+#border-agradecimentos{
+    height: 80%;
+    margin: auto;
+    width: 80%;
+    border-radius: 1rem;
+    background-color: #472B17;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    flex-direction: column;
+    color: #FFA800;
+}
+
+.border-linguagens{
+    color: #FFA800;
+    margin: auto;
+    border-radius: 1rem;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    height: 20%;
+    width: 80%;
+    background-color: #472B17;
+}
+
+.subTextsH1{
+    color: #FFA800;
+    font-family: "MarkoOne";
+    font-size: 2.5rem;
+}
+
+.div-subText{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    height: 18rem;
+    width: 30rem;
+    margin: auto;
+    border-radius: 1rem;
+    background-color: #6A3F21;
+}
+
+#container-dedicacoes{
+    display: flex;
+    justify-content: center;
+    height: 80%;
+    color: white;
+}
+
+.imagemGrabalos{
+    height: 100%;
+    width: 100%;
+    border-radius: 1rem;
+}
+
+.border-dedicacoes{
+    width: 12rem;
+    height: 12rem;
+    margin: auto;
+    border-radius: 1rem;
+}
+
+.container-jogos{
+    display: flex;
+    justify-content: space-around;
+    height: 50%;
+    flex-wrap: wrap;
+    gap: 4%;
+}
+
+.jogos{
+    color: white;
+    border: 1px solid black;
+    border-radius: 1rem;
+    width: 30%;
+    height: 50%;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    flex-direction: column;
+    margin: auto;
+    transition-timing-function: linear;
+    transition-delay: 0.2s;
+    transition: 500ms;
+
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-position: center;
+}
+
+.jogos:hover{
+    justify-content: flex-start;
+    height: 80%;
+}
+
+.container-upperdisplaygame{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.container-displaygame{
+    margin-top: -2rem;
+    margin-left: 1rem;
+    margin-right: 1rem;
+}
+
+.margin-displaygame{
+    margin: 0.6rem;
+}
+
+#nomejogo{
+    border: thick solid #6A3F21;
+    background-color: #6A3F21;
+    color: #FFA800;
+    font-size: 1.5rem;
+    display: flex;
+    justify-content: center;
+    border-radius: 0.2rem;
+}
+
+#telacheia{
+    border: thick solid #6A3F21;
+    background-color: #6A3F21;
+    border-radius: 0.2rem;
+    cursor: pointer;
+}
+
+#telajogo{
+    border: 15px solid #6A3F21;
+    height: 60vh;
+    border-radius: 0.2rem;
+    background-color: #FFA800;
+}
+
+#iframejogo{
+    height: 100%;
+    width: 100%;
+}
+
+/* Capybara Evolution */
+#capybaraEvoDiv{
+    background-image: url("./assets/gameLogos/capybaraLogo.png");
+}
+
+.container-displaycapybaraevo{
+    margin: auto;
+}
+
+#telacapybaraevo{
+    border: 15px solid #6A3F21;
+    height: 768px;
+    width: 1280px;
+    border-radius: 0.2rem;
+    background-color: #FFA800;
+}
+
+#iframecapybara{
+    height: 768px;
+    width: 1280px;
+    overflow: hidden;
+}
+
+/* Flappy Piece */
+#flappyPieceDiv{
+    background-image: url("./assets/gameLogos/flappyPieceLogo.png");
+}
+
+#telaflappy{
+    border: 15px solid #6A3F21;
+    height: 820px;
+    width: 820px;
+    border-radius: 0.2rem;
+    background-color: #FFA800;
+}
+
+#iframeflappy{
+    height: 820px;
+    width: 820px;
+}
+
+.container-displayflappy{
+    margin: auto;
+}
+
+/* Fruit Dash */
+#fruitDashDiv{
+    background-image: url("./assets/gameLogos/fruitDashLogo.png");
+}
+
+.container-displayfruitdash{
+    margin: auto;
+}
+
+#telafruitdash{
+    border: 15px solid #6A3F21;
+    height: 778px;
+    width: 1288px;
+    border-radius: 0.2rem;
+    background-color: #FFA800;
+}
+
+#iframefruitdash{
+    height: 768px;
+    width: 1280px;
+    overflow: hidden;
+}
+
+/* Fruit vs Ants */
+
+#fruitvsAntsDiv{
+    background-image: url("./assets/gameLogos/fruitVsAntsLogo.png");
+}
+
+/* CatsTeroids */
+
+#catsteroidsDiv{
+    background-image: url("./assets/gameLogos/catsTeroidsLogo.png");
+}
+
+/* Boss Slayer */
+
+#bossSlayerDiv{
+    background-image: url("./assets/gameLogos/bossSlayerLogo.png")
+}
