@@ -34,6 +34,7 @@ a{
 
 #tamanhoAssuntoPrincipal{
     width: 20rem;
+    border-radius: 5px;
 }
 
 #logo{
@@ -91,7 +92,7 @@ header{
 
 #container-mainText{
     display: flex;
-    justify-content: center;
+    justify-content: left;
     height: 42rem;
     width: 60rem;
     border-radius: 1rem;
@@ -237,7 +238,7 @@ header{
     justify-content: center;
     flex-direction: column;
     text-align: center;
-    height: 18rem;
+    height: auto;
     width: 30rem;
     margin: auto;
     border-radius: 1rem;
@@ -246,6 +247,13 @@ header{
 
 #container-dedicacoes{
     display: flex;
+    justify-content: center;
+    height: 80%;
+    color: white;
+
+}
+#container-dedicacoes-texto{
+
     justify-content: center;
     height: 80%;
     color: white;
@@ -426,4 +434,19 @@ header{
 
 #bossSlayerDiv{
     background-image: url("./assets/gameLogos/bossSlayerLogo.png")
+}
+
+.container-textoMens {
+    text-align: left;
+}
+
+#enviar-mens {
+    width: 5rem;
+    border-radius: 10px;
+    background-color: #FFA800;
+    border-color: #FFA800;
+}
+
+#detalhesticket {
+    border-radius: 5px;
 }
