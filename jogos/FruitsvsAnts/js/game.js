@@ -43,6 +43,7 @@ let startingMenu = () => {
     while(lag >= frameTime){
 
     ctx.fillRect(0, 0, canvas.width, canvas.height)
+    ctx.fillStyle = 'lightgreen'
     
     drawStartMenu()
 
