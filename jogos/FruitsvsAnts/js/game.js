@@ -42,7 +42,6 @@ let startingMenu = () => {
 
     while(lag >= frameTime){
 
-    ctx.fillStyle = "lightgreen"
     ctx.fillRect(0, 0, canvas.width, canvas.height)
     
     drawStartMenu()
@@ -99,8 +98,18 @@ let animate = () => {
         })
         
         building.target = validEnemies[0]
+
+        if(validEnemies[0] && building.type === 0) building.switchSprite('Shooting')
+        else building.switchSprite("Idle")
+
+        if(building.type === 4 && building.validTarget && building.target) building.switchSprite('Attack')
         
-        if(tripleShooterActive){
+        if(building.hp < 250 && building.type === 2) building.switchSprite('Broken')
+
+
+        if(building.ready === true && building.type === 3) building.switchSprite('Growth')
+        
+        if(building.tripleShooter){
         let secondValidEnemies = enemies.filter(enemy => {
             return building.center.y + 70 > enemy.center.y && building.center.y < enemy.center.y && enemy.center.x < 1320 && !(validEnemies.includes(enemy)) // de baixo
         }) 
@@ -109,6 +118,7 @@ let animate = () => {
         })
         building.secondTarget = secondValidEnemies[0] 
         building.thirdTarget = thirdValidEnemies[0]
+        if(secondValidEnemies[0] || thirdValidEnemies[0] || validEnemies[0]) building.switchSprite('Shooting')
         }
 
         let tileIndex = placementTiles.findIndex(tile => {
@@ -154,14 +164,16 @@ let animate = () => {
         let buildIndex = buildings.findIndex(building => {
             return building.position.x + 50 > enemy.position.x && building.position.x - 50 < enemy.position.x && building.position.y + 50 > enemy.position.y && building.position.y - 50 < enemy.position.y
         })
-        if(buildIndex != -1){
+        if(buildIndex != -1 && !buildings[buildIndex].ready){
             enemy.buildingCollision(buildIndex)
+            enemy.switchSprite('Eating')
             if(buildings[buildIndex].hp <= 0){
                 let enemiesSameTarget = enemies.filter(enemy => {
                     return enemy.target == buildings[buildIndex]
                 })
                 for(let i = enemiesSameTarget.length - 1; i >= 0; i--){
                     let enemy = enemiesSameTarget[i]
+                    enemy.switchSprite('Run')
                     enemy.inBuilding = false
                 }
             }}

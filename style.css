@@ -33,7 +33,7 @@ a{
 }
 
 #tamanhoAssuntoPrincipal{
-    width: 20rem;
+    width: 100%;
     border-radius: 5px;
 }
 
@@ -90,6 +90,11 @@ header{
     justify-content: space-around;
 }
 
+.container-mensagem{
+    display: flex;
+    justify-content: space-around;
+}
+
 #container-mainText{
     display: flex;
     justify-content: left;
@@ -97,6 +102,19 @@ header{
     width: 60rem;
     border-radius: 1rem;
     background-color: #6A3F21;
+}
+
+#container-mensagemText{
+    display: flex;
+    justify-content: left;
+    height: 100%;
+    width: 40%;
+    border-radius: 1rem;
+    background-color: #6A3F21;
+}
+
+#container-mensagemText > h2, h1{
+    width: 100%;
 }
 
 #container-infoCria{
@@ -449,4 +467,5 @@ header{
 
 #detalhesticket {
     border-radius: 5px;
+    width: 100%;
 }

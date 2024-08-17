@@ -66,18 +66,31 @@ let shovelSpriteCordinates = {x: shovelSprite.position.x, y: shovelSprite.positi
 
 let cards = [card1, card2, card3, card4, card5, card6]
 
-let seeds = 50
+let seeds = 100
 
 let draggingShovel = false
-
+//source, frameRate = 1, frameBuffer = 3, scale = 1, animations
 let currentBuilding = {
+    fixY: null,
+    fixX: 0,
     price: null,
     color: null,
     cooldown: null,
     type: null,
     damage: null,
+    source: null,
+    frameRate: null,
+    frameBuffer: null,
+    scale: null,
+    animations: {
+        animationName: {
+            source: null,
+            frameRate: null,
+            frameBuffer: null,
+            image: new Image()
+        },
+    }
 }
-let tripleShooterActive = false
 let buildingSelected = false
 let selectedCard = undefined
 

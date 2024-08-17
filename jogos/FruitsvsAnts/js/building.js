@@ -1,5 +1,5 @@
 class Projectile {
-    constructor(position = {x: 0, y: 0}, enemy, damage){
+    constructor(position = {x: 0, y: 0}, enemy, damage, type){
         this.position = position
         this.velocity = {
             x: 0,
@@ -9,13 +9,15 @@ class Projectile {
         this.radius = 10
         this.speed = 5
         this.damage = damage
+        this.type = type
+        this.image = new Image()
+        if(this.type === 0) this.image.src = "./assets/buildings/grapeProjectile.png"
+        else if(this.type === 5) this.image.src = "./assets/buildings/greengrapeProjectile.png"
+        else this.image.src = "./assets/buildings/none.png"
     }
 
     draw(){
-        ctx.beginPath();
-        ctx.arc(this.position.x, this.position.y, this.radius, 0, Math.PI * 2)
-        ctx.fillStyle = "orange"
-        ctx.fill()
+        ctx.drawImage(this.image, this.position.x, this.position.y - 20, 60, 30)
     }
 
     update(){
@@ -32,8 +34,9 @@ class Projectile {
     }
 }
 
-class Building {
-    constructor(position = {x: 0, y:0}, price, color, projectileCooldown, projectileDamage){
+class Building extends animatedSprite {
+    constructor({position = {x: 0, y:0}, imagePosition = {x: 0, y:0}, price, projectileCooldown, projectileDamage, source, frameRate = 1, frameBuffer = 3, scale = 1, animations}){
+        super({ position, source, frameRate, frameBuffer, scale, animations})
         this.position = position
         this.size = 64
         this.center = {
@@ -44,35 +47,49 @@ class Building {
         this.target
         this.frames = 1
         this.price = price
-        this.color = color
         this.projectileCooldown = projectileCooldown
         this.projectileDamage = projectileDamage
         this.hp = 100
+        this.imagePosition = imagePosition
     }
 
-    draw(){
-        ctx.fillStyle = this.color;
-        ctx.fillRect(this.position.x, this.position.y, this.size, this.size)
+    draw() {
+        if (!this.image) return;
+        
+        let cropbox = {
+            position: {
+                x: this.currentFrame * (this.image.width / this.frameRate),
+                y: 0
+            },
+            width: this.image.width / this.frameRate,
+            height: this.image.height
+        };
+
+        ctx.drawImage(this.image, cropbox.position.x, cropbox.position.y, cropbox.width, cropbox.height, this.imagePosition.x, this.imagePosition.y, this.width, this.height)
     }
 }
 
 class Shooter extends Building{
-    constructor(position = {x: 0, y:0}, price, color, projectileCooldown, projectileDamage){
-        super(position, price, color, projectileCooldown, projectileDamage)
-        this.multipleTarget
+    constructor({position = {x: 0, y:0}, imagePosition = {x: 0, y:0}, price, projectileCooldown, projectileDamage, source, frameRate = 1, frameBuffer = 3, scale = 1, animations}){
+        super({price, imagePosition, projectileCooldown, projectileDamage, position, source, frameRate, frameBuffer, scale, animations})
+        this.type = 0
     }
+
     update(){
         this.draw()
+        this.updateFrames()
         if(this.frames % this.projectileCooldown === 0 && this.target){
-        this.projectiles.push(new Projectile(position = {x: this.center.x, y: this.center.y}, this.target, this.projectileDamage))
+        this.projectiles.push(new Projectile(position = {x: this.center.x, y: this.center.y}, this.target, this.projectileDamage, 0))
     }
         this.frames++
     }
 }
 
 class TripleShooter extends Building{
-    constructor(position = {x: 0, y:0}, price, color, projectileCooldown, projectileDamage){
-        super(position, price, color, projectileCooldown, projectileDamage)
+    constructor({position = {x: 0, y:0}, imagePosition = {x: 0, y:0}, price, projectileCooldown, projectileDamage, source, frameRate = 1, frameBuffer = 3, scale = 1, animations}){
+        super({price, imagePosition, projectileCooldown, projectileDamage, position, source, frameRate, frameBuffer, scale, animations})
+        this.tripleShooter = true
+        this.type = 5
         this.secondPosition = {
             x: position.x,
             y: position.y+65
@@ -113,12 +130,13 @@ class TripleShooter extends Building{
 
     update(){
         this.draw()
+        this.updateFrames()
         if(this.frames % this.projectileCooldown === 0 && (this.target || this.secondTarget || this.thirdTarget)){
-        this.projectiles.push(new Projectile(position = {x: this.center.x, y: this.center.y}, this.target || this.firstTargetOption, this.projectileDamage))
+        this.projectiles.push(new Projectile(position = {x: this.center.x, y: this.center.y}, this.target || this.firstTargetOption, this.projectileDamage, 5))
         if(this.position.y < 500)
-        this.projectiles.push(new Projectile(position = {x: this.secondCenter.x, y: this.secondCenter.y}, this.secondTarget || this.secondTargetOption, this.projectileDamage))
+        this.projectiles.push(new Projectile(position = {x: this.secondCenter.x, y: this.secondCenter.y}, this.secondTarget || this.secondTargetOption, this.projectileDamage, 5))
         if(this.position.y > 200){
-        this.projectiles.push(new Projectile(position = {x: this.thirdCenter.x, y: this.thirdCenter.y}, this.thirdTarget || this.thirdTargetOption, this.projectileDamage))}
+        this.projectiles.push(new Projectile(position = {x: this.thirdCenter.x, y: this.thirdCenter.y}, this.thirdTarget || this.thirdTargetOption, this.projectileDamage, 5))}
     }
         this.frames++
     }
@@ -139,19 +157,18 @@ class Farmer extends Building{
 }
 
 class Tank extends Building{
-    constructor(position = {x: 0, y:0}, price, color, projectileCooldown, projectileDamage){
-        super(position, price, color, projectileCooldown, projectileDamage)
+    constructor({position = {x: 0, y:0}, imagePosition = {x: 0, y:0}, price, projectileCooldown, projectileDamage, source, frameRate = 1, frameBuffer = 3, scale = 1, animations}){
+        super({price, imagePosition, projectileCooldown, projectileDamage, position, source, frameRate, frameBuffer, scale, animations})
         this.hp = 500
-    }
-    update(){
-        this.draw()
+        this.type = 2
     }
 }
 
 class Fighter extends Building{
-    constructor(position = {x: 0, y:0}, price, color, projectileCooldown, projectileDamage){
-        super(position, price, color, projectileCooldown, projectileDamage)
+    constructor({position = {x: 0, y:0}, imagePosition = {x: 0, y:0}, price, projectileCooldown, projectileDamage, source, frameRate = 1, frameBuffer = 3, scale = 1, animations}){
+        super({price, imagePosition, projectileCooldown, projectileDamage, position, source, frameRate, frameBuffer, scale, animations})
         this.validTarget = false
+        this.type = 4
     }
 
     checkTarget(){
@@ -164,19 +181,18 @@ class Fighter extends Building{
 
     update(){
         this.draw()
-        if(this.target){
-        this.checkTarget()}
-        if(this.frames % this.projectileCooldown === 0 && this.validTarget && this.target){
-            this.projectiles.push(new Projectile(position = {x: this.target.center.x, y: this.target.center.y}, this.target, this.projectileDamage))
-        }
+        this.updateFrames()
+        if(this.target) this.checkTarget()
+        if(this.frames % this.projectileCooldown === 0 && this.validTarget && this.target) this.projectiles.push(new Projectile(position = {x: this.target.center.x, y: this.target.center.y}, this.target, this.projectileDamage))
         this.frames++
     }
 }
 
 class Bomb extends Building{
-    constructor(position = {x: 0, y:0}, price, color, projectileCooldown, projectileDamage){
-        super(position, price, color, projectileCooldown, projectileDamage)
+    constructor({position = {x: 0, y:0}, imagePosition = {x: 0, y:0}, price, projectileCooldown, projectileDamage, source, frameRate = 1, frameBuffer = 3, scale = 1, animations}){
+        super({price, imagePosition, projectileCooldown, projectileDamage, position, source, frameRate, frameBuffer, scale, animations})
         this.ready = false
+        this.type = 3
     }
 
     explode(){
@@ -189,7 +205,6 @@ class Bomb extends Building{
     getReady(){
         if(this.frames % this.projectileCooldown === 0){
             this.ready = true
-            this.color = "lightyellow"
         }
         this.frames++
     }

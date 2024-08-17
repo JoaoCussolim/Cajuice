@@ -1,5 +1,6 @@
-class Enemy{
-    constructor(position = {x: 0, y:0}, pathDistance){
+class Enemy extends animatedSprite{
+    constructor({ position = { x: 0, y: 0 }, pathDistance, source, frameRate = 1, frameBuffer = 3, scale = 1, animations, health}){ 
+        super({position, source, frameRate, frameBuffer, scale, animations})
         this.position = position
         this.dimensions = {
             width: 50,
@@ -9,10 +10,14 @@ class Enemy{
             x: this.position.x + this.dimensions.width/2,
             y: this.position.y + this.dimensions.height/2
         }
+        this.imageCenter = {
+            x: this.position.x - 55,
+            y: this.position.y - 55
+        }
         this.radius = 25
         this.waypointIndex = 0
         this.pathDistance = pathDistance
-        this.health = 100
+        this.health = health
         this.velocity = {
             x: 0,
             y: 0
@@ -21,21 +26,6 @@ class Enemy{
         this.inBuilding = false
         this.damage = 1
         this.target
-    }
-
-    draw(){
-        ctx.fillStyle="red";
-        //ctx.fillRect(this.position.x, this.position.y, this.dimensions.width, this.dimensions.height)
-        ctx.beginPath()
-        ctx.arc(this.center.x, this.center.y, this.radius, 0, Math.PI * 2)
-        ctx.fill()
-
-        //health bar
-        ctx.fillStyle="red"
-        ctx.fillRect(this.position.x, this.position.y - 15, this.dimensions.width, 10)
-
-        ctx.fillStyle="green"
-        ctx.fillRect(this.position.x, this.position.y - 15, this.dimensions.width * this.health/100, 10)
     }
 
     walk(){
@@ -51,11 +41,31 @@ class Enemy{
             x: this.position.x + this.dimensions.width/2,
             y: this.position.y + this.dimensions.height/2
         }
+        this.imageCenter = {
+            x: this.position.x - 30,
+            y: this.position.y - 30
+        }
 
         if(Math.abs(Math.round(this.center.x) - Math.round(waypoint.x)) < Math.abs(this.velocity.x) && Math.abs(Math.round(this.center.y) - Math.round(waypoint.y + this.pathDistance)) < Math.abs(this.velocity.y) && this.waypointIndex < basePath.length - 1){
             this.waypointIndex++
         }
     }
+
+    draw() {
+        if (!this.image && this.health <= 0) return;
+        
+        let cropbox = {
+            position: {
+                x: this.currentFrame * (this.image.width / this.frameRate),
+                y: 0
+            },
+            width: this.image.width / this.frameRate,
+            height: this.image.height
+        };
+
+        ctx.drawImage(this.image, cropbox.position.x, cropbox.position.y, cropbox.width, cropbox.height, this.imageCenter.x, this.imageCenter.y, this.width, this.height)
+    }
+
 
     buildingCollision(buildIndex){
         this.inBuilding = true
@@ -65,6 +75,7 @@ class Enemy{
 
     update(){
         this.draw()
+        this.updateFrames()
         if(!this.inBuilding){
         this.walk()}
     }
@@ -79,6 +90,61 @@ function RandomInt(min, max) {
 let howManyinPath = [{number: 0}, {number: 0}, {number: 0}, {number: 0}, {number: 0}, {number: 0}]
 let spaceBetweenEnemies = 100
 
+let whatAnt = {
+    1: (enemyDistance, pathDistance) => {let actualEnemy = new Enemy({position: {x: Math.floor(basePath[0].x + enemyDistance), y: Math.floor(basePath[0].y + pathDistance)}, pathDistance: pathDistance, source: './assets/ants/brownantRun.png', frameBuffer: 15, frameRate: 3, scale: 0.4, animations: {
+        Run: {
+            source: "./assets/ants/brownantRun.png",
+            frameRate: 3,
+            frameBuffer: 15,
+            image: new Image()
+        },
+        
+        Eating: {
+            source: "./assets/ants/brownantEat.png",
+            frameRate: 2,
+            frameBuffer: 15,
+            image: new Image()
+        },
+    
+    }, health: 100})
+    return actualEnemy},
+    2: (enemyDistance, pathDistance) => {let actualEnemy = new Enemy({position: {x: Math.floor(basePath[0].x + enemyDistance), y: Math.floor(basePath[0].y + pathDistance)}, pathDistance: pathDistance, source: './assets/ants/redantRun.png', frameBuffer: 15, frameRate: 3, scale: 0.07, animations: {
+        Run: {
+            source: "./assets/ants/redantRun.png",
+            frameRate: 3,
+            frameBuffer: 15,
+            image: new Image()
+        },
+        
+        Eating: {
+            source: "./assets/ants/redantEat.png",
+            frameRate: 2,
+            frameBuffer: 15,
+            image: new Image()
+        },
+    
+    }, health: 150})
+    return actualEnemy},
+    3: (enemyDistance, pathDistance) => {let actualEnemy = new Enemy({position: {x: Math.floor(basePath[0].x + enemyDistance), y: Math.floor(basePath[0].y + pathDistance)}, pathDistance: pathDistance, source: './assets/ants/blueantRun.png', frameBuffer: 15, frameRate: 3, scale: 0.5, animations: {
+        Run: {
+            source: "./assets/ants/blueantRun.png",
+            frameRate: 3,
+            frameBuffer: 15,
+            image: new Image()
+        },
+        
+        Eating: {
+            source: "./assets/ants/blueantEat.png",
+            frameRate: 2,
+            frameBuffer: 15,
+            image: new Image()
+        },
+    
+    }, health: 300})
+    return actualEnemy
+    }
+}
+
 function getEnemies(){
     if(enemies.length === 0){
         howManyinPath[0].number = 0
@@ -89,9 +155,13 @@ function getEnemies(){
         howManyinPath[5].number = 0
     }
     let path = RandomInt(0, 5)
+    let antNumber = 1
+    if(waveNumber >= 5){
+        antNumber = RandomInt(1, 3)
+    }
     let pathDistance = distanceBetweenPaths * path
     let enemyDistance = spaceBetweenEnemies * howManyinPath[path].number
-    enemies.push(new Enemy(position = {x: Math.floor(basePath[0].x + enemyDistance), y: Math.floor(basePath[0].y + pathDistance)}, pathDistance))
+    enemies.push(whatAnt[antNumber](enemyDistance, pathDistance))
     howManyinPath[path].number++
 }
 
