@@ -39,7 +39,7 @@ class Projectile extends Sprite{
         this.shouldDoDamage = false
         console.log(this.hitbox.position.x, this.hitbox.position.y)
         setTimeout(() => {
-            if(this.hitbox.position.x + this.hitbox.width >= player.hitbox.position.x && this.hitbox.position.x <= player.hitbox.position.x + player.hitbox.width && this.hitbox.position.y + this.hitbox.height >= player.hitbox.position.y && this.hitbox.position.y <= player.hitbox.position.y + player.hitbox.height && player.health > 0 && !player.invulnerability){
+            if(this.hitbox.position.x + this.hitbox.width >= player.hitbox.position.x && this.hitbox.position.x <= player.hitbox.position.x + player.hitbox.width && this.hitbox.position.y + this.hitbox.height >= player.hitbox.position.y && this.hitbox.position.y <= player.hitbox.position.y + player.hitbox.height && player.health > 0 && !player.invulnerability && boss.alive){
                 player.health -= this.damage
                 player.takingDamage = true
                 player.receivingDamage()

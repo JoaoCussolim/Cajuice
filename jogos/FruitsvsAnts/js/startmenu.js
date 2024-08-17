@@ -66,7 +66,7 @@ let passedLevel = () => {
     if(actualLevel != lastLevel && !endlessMode && !gameOver){
         rewardLevelOpen = false
         lastLevel = actualLevel
-        waveNumber = 20
+        waveNumber = 0
         maxWavesNumber = 10 + 5 * actualLevel
         seeds = 50
         enemyCount = 1

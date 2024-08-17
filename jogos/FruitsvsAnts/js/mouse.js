@@ -36,18 +36,21 @@ canvas.addEventListener("mousedown", (e) => {
             levelSelectorOpen = false
             debugStartMenuClicking = false
             playing = true
+            location.reload()
         }
         if(isInsideButton(LevelTwoButtonCordinates) && debugStartMenuClicking && levelBeaten >= 0){
             actualLevel = 1
             levelSelectorOpen = false
             debugStartMenuClicking = false
             playing = true
+            location.reload()
         }
         if(isInsideButton(LevelThreeButtonCordinates) && debugStartMenuClicking && levelBeaten >= 1){
             actualLevel = 2
             levelSelectorOpen = false
             debugStartMenuClicking = false
             playing = true
+            location.reload()
         }
         if(isInsideButton(endlessModeButtonCordinates) && levelBeaten >= 2){
             endlessMode = true
@@ -55,6 +58,7 @@ canvas.addEventListener("mousedown", (e) => {
             debugStartMenuClicking = false
             maxWavesNumber = Infinity
             playing = true
+            location.reload()
         }
     }
 
@@ -284,6 +288,14 @@ canvas.addEventListener("mouseup", (e) => {
             let buildIndex = buildings.findIndex(building => {
                 return building.position.x == tile.position.x && building.position.y == tile.position.y
             })
+            let enemiesInBuilding = enemies.filter(enemy => {
+                return enemy.target === buildings[buildIndex]
+            })
+            for(let i = enemiesInBuilding.length - 1; i >= 0; i--){
+                enemy = enemies[i]
+                enemy.switchSprite('Run')
+                enemy.inBuilding = false
+            }
             buildings.splice(buildIndex, 1)
             tile.isOccupied = false
             break
