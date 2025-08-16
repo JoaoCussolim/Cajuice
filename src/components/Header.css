@@ -1,0 +1,47 @@
+.site-header {
+    background-color: var(--preto);
+    padding: 1rem 2rem;
+    border-bottom: 4px solid var(--laranja);
+}
+
+.header-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.site-title {
+    color: var(--laranja);
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin: 0;
+}
+
+.site-header nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 2rem;
+}
+
+.site-header nav a {
+    color: var(--amarelo-claro);
+    text-decoration: none;
+    font-size: 1.2rem;
+    font-weight: 500;
+    padding-bottom: 5px;
+    border-bottom: 2px solid transparent;
+    transition: color 0.3s, border-color 0.3s;
+}
+
+.site-header nav a:hover {
+    color: var(--laranja);
+}
+
+.site-header nav a.active-link {
+    color: var(--laranja);
+    border-bottom: 2px solid var(--laranja);
+}

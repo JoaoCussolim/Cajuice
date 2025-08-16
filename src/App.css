@@ -1,0 +1,27 @@
+/* Definindo as variáveis de cor para facilitar a manutenção */
+:root {
+  --laranja: #FFA500;
+  /* Laranja vibrante */
+  --amarelo-claro: #FFF8E1;
+  /* Um amarelo bem pálido, tipo creme */
+  --preto: #121212;
+  /* Um preto não tão absoluto, mais suave */
+  --preto-secundario: #1E1E1E;
+  /* Para fundos de cards e seções */
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: var(--preto);
+  color: var(--amarelo-claro);
+}
+
+/* Remove a decoração de texto de todos os links */
+a {
+  text-decoration: none;
+}
