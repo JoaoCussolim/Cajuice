@@ -38,7 +38,7 @@ export default function Header() {
         <div className="logo">
           {/* Logo clicável que leva pra Home */}
           <Link to="/">
-            <img src="/Logo.png" alt="Logo Cajuice" />
+            <img src="/Logo(1).png" alt="Logo Cajuice" />
           </Link>
         </div>
 

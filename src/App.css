@@ -444,92 +444,338 @@ header .search-bar input:focus {
 /* =========================================
    PÁGINA SOBRE
 ========================================= */
+
 .sobre-hero {
-  background: linear-gradient(135deg, var(--laranja-caju), var(--amarelo-caju));
+  background: linear-gradient(
+    135deg,
+    var(--laranja-caju),
+    var(--amarelo-caju)
+  );
   color: white;
-  padding: 40px;
+  padding: 50px 30px;
   text-align: center;
 }
 
 .sobre-hero h2 {
   font-size: 3rem;
   font-weight: bold;
-  color: #FFF;
+  color: #fff;
+  margin-bottom: 15px;
 }
 
 .sobre-hero p {
   font-size: 1.4rem;
-  margin-top: 20px;
   font-style: italic;
   max-width: 700px;
-  margin-left: auto;
-  margin-right: auto;
+  margin: 0 auto;
 }
 
 .intro {
   background-color: #555;
   padding: 40px;
-  border-radius: 10px;
+  border-radius: 12px;
   text-align: center;
+  margin-top: 40px;
 }
 
 .intro h2 {
-  font-size: 2.5em;
+  font-size: 2.5rem;
   color: var(--laranja-caju);
   margin-bottom: 20px;
 }
 
 .intro p {
-  font-size: 1.2em;
+  font-size: 1.2rem;
   color: #ddd;
+  line-height: 1.7;
+  max-width: 900px;
+  margin: 0 auto;
 }
 
-.timeline {
-  display: flex;
-  justify-content: space-between;
+.project-origin {
   margin-top: 50px;
-  gap: 20px;
+  background-color: #4d4d4d;
+  border-radius: 12px;
+  padding: 45px;
+  border-left: 6px solid var(--laranja-caju);
 }
 
-.timeline div {
-  flex: 1;
-  background-color: #555;
-  padding: 30px;
-  border-radius: 8px;
+.origin-content {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.origin-content h2 {
+  color: #fff;
+  font-size: 2.2rem;
+  margin-bottom: 20px;
+}
+
+.origin-content p {
+  color: #ddd;
+  font-size: 1.1rem;
+  line-height: 1.7;
+  margin-bottom: 15px;
+}
+
+.origin-content p:last-child {
+  margin-bottom: 0;
+}
+
+.section-header {
   text-align: center;
-  color: #f0f0f0;
-  transition: transform 0.3s ease;
+  margin-bottom: 35px;
 }
 
-.timeline div:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
+.section-header h2 {
+  color: #fff;
+  font-size: 2.3rem;
+  margin-top: 5px;
 }
 
-.team {
-  display: flex;
-  justify-content: space-evenly;
+.section-header p {
+  color: #ccc;
+  font-size: 1.05rem;
+  margin-top: 10px;
+}
+
+.section-label {
+  display: inline-block;
+  color: var(--laranja-caju);
+  font-size: 0.85rem;
+  font-weight: bold;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.about-section {
   margin-top: 60px;
+}
+
+.members-grid {
+  display: grid;
   gap: 30px;
 }
 
-.team .member {
+.founders-grid {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.member {
+  background-color: #555;
+  border-radius: 12px;
+  padding: 30px;
   text-align: center;
-  flex-basis: 45%;
-  transition: transform 0.3s ease;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
 }
 
-.team .member:hover {
-  transform: scale(1.05);
+.member:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.25);
 }
 
-.team .member img {
-  border-radius: 50%;
+.member-image {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.member-image img {
   width: 150px;
   height: 150px;
   object-fit: cover;
+  border-radius: 50%;
   border: 5px solid var(--laranja-caju);
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.member-content h3 {
+  color: var(--laranja-caju);
+  font-size: 1.5rem;
+  margin-bottom: 12px;
+}
+
+.member-content p {
+  color: #ddd;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+
+.secondary-sections {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px;
+  margin-top: 60px;
+}
+
+.secondary-sections .about-section {
+  margin-top: 0;
+}
+
+.inspiration-section,
+.designer-section {
+  background-color: #4d4d4d;
+  padding: 35px;
+  border-radius: 12px;
+}
+
+.featured-member {
+  background-color: #555;
+  height: calc(100% - 80px);
+}
+
+.inspiration-section .member-image img,
+.designer-section .member-image img {
+  width: 140px;
+  height: 140px;
+}
+
+.credits-section {
+  margin-top: 70px;
+  background-color: #4d4d4d;
+  padding: 45px;
+  border-radius: 12px;
+}
+
+.credits-list {
+  max-width: 850px;
+  margin: 0 auto;
+}
+
+.credit-item {
+  background-color: #555;
+  color: #ddd;
+  padding: 16px 20px;
+  border-radius: 8px;
+  margin-bottom: 12px;
+  line-height: 1.5;
+  border-left: 4px solid var(--laranja-caju);
+}
+
+.credit-item a {
+  color: var(--laranja-caju);
+  font-weight: bold;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.credit-item a:hover {
+  color: var(--amarelo-caju);
+  text-decoration: underline;
+}
+
+.credits-placeholder {
+  color: #aaa;
+  font-style: italic;
+  text-align: center;
+}
+
+.about-action {
+  display: flex;
+  justify-content: center;
+  margin: 50px 0;
+}
+
+@media (max-width: 1000px) {
+  .founders-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .founders-grid .member:last-child {
+    grid-column: 1 / -1;
+    max-width: 500px;
+    width: 100%;
+    justify-self: center;
+  }
+}
+
+
+@media (max-width: 768px) {
+  .sobre-hero {
+    padding: 40px 20px;
+  }
+
+  .sobre-hero h2 {
+    font-size: 2.3rem;
+  }
+
+  .sobre-hero p {
+    font-size: 1.1rem;
+  }
+
+  .intro {
+    padding: 30px 20px;
+  }
+
+  .intro h2 {
+    font-size: 2rem;
+  }
+
+  .intro p {
+    font-size: 1rem;
+  }
+
+  .project-origin {
+    padding: 30px 25px;
+  }
+
+  .origin-content h2 {
+    font-size: 1.9rem;
+  }
+
+  .founders-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .founders-grid .member:last-child {
+    grid-column: auto;
+    max-width: none;
+  }
+
+  .secondary-sections {
+    grid-template-columns: 1fr;
+  }
+
+  .credits-section {
+    padding: 35px 25px;
+  }
+}
+
+
+@media (max-width: 480px) {
+  .sobre-hero h2 {
+    font-size: 2rem;
+  }
+
+  .intro h2,
+  .section-header h2 {
+    font-size: 1.8rem;
+  }
+
+  .project-origin {
+    padding: 25px 20px;
+  }
+
+  .member {
+    padding: 25px 20px;
+  }
+
+  .member-image img {
+    width: 125px;
+    height: 125px;
+  }
+
+  .inspiration-section,
+  .designer-section {
+    padding: 25px 20px;
+  }
+
+  .credits-section {
+    padding: 30px 20px;
+  }
 }
 
 /* =========================================

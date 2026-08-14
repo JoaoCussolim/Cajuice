@@ -1,31 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import Header from '../components/Header'; // <-- Puxa o Header inteligente
+import Header from '../components/Header';
 import { gamesData } from '../gamesData'; 
 
 export default function Home() {
   return (
     <>
       <Header />
-
-      <section className="hero">
-        <div className="hero-cards">
-          <div className="hero-card large">
-            <h3>Promoção de lançamento!</h3>
-            <p>Ganhe bônus jogando Capybara Evolution.</p>
-          </div>
-          <div className="hero-right">
-            <div className="hero-card">
-              <h3>Novidade!</h3>
-              <p>Frutas vs Formigas agora com multiplayer.</p>
-            </div>
-            <div className="hero-card">
-              <h3>Destaque da semana</h3>
-              <p>Desafie o Boss Slayer e entre no ranking.</p>
-            </div>
-          </div>
-        </div>
-      </section>
 
       <section className="games-header">
         <h2>Games</h2>
