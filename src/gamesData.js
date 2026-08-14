@@ -1,12 +1,12 @@
-import React from 'react';
-import GameCard from '../components/GameCard';
-import BossSlayerLogo from "../assets/bossSlayerLogo.png"
-import CapybaraLogo from "../assets/capybaraLogo.png"
-import CatsTeroidsLogo from "../assets/catsTeroidsLogo.png"
-import FlappyPieceLogo from "../assets/flappyPieceLogo.png"
-import FruitDashLogo from "../assets/fruitDashLogo.png"
-import FruitsVsAntsLogo from "../assets/fruitVsAntsLogo.png"
-import './Games.css';
+import BossSlayerLogo from "./assets/bossSlayerLogo.png";
+import CapybaraLogo from "./assets/capybaraLogo.png";
+import CatsTeroidsLogo from "./assets/catsTeroidsLogo.png";
+import FlappyPieceLogo from "./assets/flappyPieceLogo.png";
+import FruitDashLogo from "./assets/fruitDashLogo.png";
+import FruitsVsAntsLogo from "./assets/fruitVsAntsLogo.png";
+import CodebotLogo from "./assets/codebotLogo.png";
+import PachislotLogo from "./assets/pachislotLogo.png";
+import LeagueRoyalLogo from "./assets/leagueRoyalLogo.png";
 
 export const gamesData = [
     {
@@ -25,7 +25,7 @@ export const gamesData = [
         imageUrl: FruitsVsAntsLogo,
         gameUrl: "https://fruitsvsantscajuice.netlify.app/",
         width: 1280, // Adicionado
-        height: 720  // Adicionado
+        height: 770  // Adicionado
     },
     {
         id: 3,
@@ -34,7 +34,7 @@ export const gamesData = [
         imageUrl: BossSlayerLogo,
         gameUrl: "https://bossslayercajuice.netlify.app/",
         width: 1280, // Adicionado
-        height: 768  // Adicionado
+        height: 770  // Adicionado
     },
     {
         id: 4,
@@ -43,7 +43,7 @@ export const gamesData = [
         imageUrl: FlappyPieceLogo,
         gameUrl: "https://flappypiececajuice.netlify.app/",
         width: 816,
-        height: 820
+        height: 810
     },
     {
         id: 5,
@@ -61,28 +61,33 @@ export const gamesData = [
         imageUrl: CatsTeroidsLogo,
         gameUrl: "https://catsteroidscajuice.netlify.app/",
         width: 1280, // Adicionado
-        height: 760  // Adicionado
+        height: 800  // Adicionado
+    },
+    {
+        id: 7,
+        title: "Codebot",
+        description: "Aprenda o básico de programação ajudando codebot a chegar no seu destino!",
+        imageUrl: CodebotLogo,
+        gameUrl: "https://codebot-dusky.vercel.app/",
+        width: 800, // Adicionado
+        height: 600  // Adicionado
+    },
+     {
+        id: 8,
+        title: "Pachislot Machine Simulator",
+        description: "Teste sua sorte com essa maquina estranha",
+        imageUrl: PachislotLogo,
+        gameUrl: "https://pachislot-machine.vercel.app/",
+        width: 1280, // Adicionado
+        height: 900  // Adicionado
+    },
+    {
+        id: 9,
+        title: "League Royal",
+        description: "Uma incrivel fusão entre Clash Royale e League of Legends",
+        imageUrl: LeagueRoyalLogo,
+        gameUrl: "https://league-royal.vercel.app",
+        width: 1280, // Adicionado
+        height: 900  // Adicionado
     },
 ];
-
-// O resto do componente Games continua o mesmo
-function Games() {
-    return (
-        <div className="page-container">
-            <h2>Nossos Jogos</h2>
-            <div className="games-grid">
-                {gamesData.map(game => (
-                    <GameCard
-                        key={game.id}
-                        id={game.id}
-                        title={game.title}
-                        description={game.description}
-                        imageUrl={game.imageUrl}
-                    />
-                ))}
-            </div>
-        </div>
-    );
-}
-
-export default Games;

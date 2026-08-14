@@ -1,27 +1,587 @@
-/* Definindo as variáveis de cor para facilitar a manutenção */
+/* =========================================
+   VARIÁVEIS GERAIS
+========================================= */
 :root {
   --laranja: #FFA500;
-  /* Laranja vibrante */
+  --laranja-caju: #FF6600;
   --amarelo-claro: #FFF8E1;
-  /* Um amarelo bem pálido, tipo creme */
+  --amarelo-caju: #FFCC00;
   --preto: #121212;
-  /* Um preto não tão absoluto, mais suave */
   --preto-secundario: #1E1E1E;
-  /* Para fundos de cards e seções */
+  --fundo-cinza: #333;
+  --fundo-card: #444;
+}
+
+/* =========================================
+   RESET E ESTILOS GERAIS
+========================================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', 'Arial', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: var(--preto);
-  color: var(--amarelo-claro);
+  background-color: var(--fundo-cinza);
+  color: #FFF;
+  line-height: 1.6;
 }
 
-/* Remove a decoração de texto de todos os links */
+h1, h2, h3 {
+  font-family: 'Verdana', sans-serif;
+  font-weight: bold;
+  color: var(--amarelo-caju);
+}
+
 a {
   text-decoration: none;
+  color: inherit;
+}
+
+/* =========================================
+   COMPONENTES REUTILIZÁVEIS
+========================================= */
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 40px auto;
+  padding: 20px;
+  background-color: var(--fundo-card);
+  border-radius: 10px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Unifiquei o .btn e o .button pois faziam a mesma coisa */
+.btn, .button {
+  display: inline-block;
+  padding: 15px 30px;
+  background: linear-gradient(135deg, var(--laranja-caju), var(--amarelo-caju));
+  color: white;
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 1.1em;
+  border-radius: 50px;
+  margin: 20px auto;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+}
+
+.btn:hover, .button:hover {
+  background-color: var(--amarelo-caju);
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.4);
+  filter: brightness(1.1);
+}
+/* =========================================
+   CABEÇALHO (HEADER) - GERAL
+========================================= */
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  background-color: var(--fundo-cinza);
+  padding: 10px 20px; /* Reduzimos o espaço aqui */
+  box-shadow: 0 4px 6px rgba(0,0,0,0.3); /* Dá um sombreado para separar do fundo */
+}
+
+header .logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1.8em;
+  font-weight: bold;
+  color: white;
+}
+
+header .logo img {
+  width: 140px; /* Diminuímos a logo que estava gigante */
+  height: auto;
+}
+
+header .search-bar, 
+.search-box {
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  padding: 0 20px;
+  max-width: 500px; /* Reduzido levemente */
+  margin: 0 auto;
+}
+
+header .search-bar input,
+.search-box input {
+  width: 100%;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 25px;
+  font-size: 0.9rem;
+  color: white;
+  background-color: var(--fundo-card);
+  outline: none;
+}
+/* =========================================
+   MENU DE NAVEGAÇÃO (BOTÕES ORIGINAIS)
+========================================= */
+header nav {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+header nav ul {
+  list-style-type: none; /* Remove bolinhas da lista */
+  display: flex;
+  margin: 0;
+  padding: 0;
+}
+
+header nav ul li {
+  margin-left: 25px;
+}
+
+/* O botão bonitão original de volta */
+header nav a {
+  display: inline-block;
+  background: linear-gradient(135deg, var(--laranja-caju), var(--amarelo-caju));
+  color: white;
+  padding: 15px 30px;
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: bold;
+  border-radius: 50px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+header nav a:hover {
+  /* Substituí a troca seca de cor por um brilho e um pequeno salto, fica bem mais fluido */
+  filter: brightness(1.1);
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+}
+
+/* =========================================
+   BOTÃO HAMBURGUER (SIDEBAR)
+========================================= */
+.hamburger {
+  font-size: 26px;
+  background-color: var(--fundo-card); /* Corresponde ao seu #444 */
+  border: none;
+  border-radius: 12px;
+  color: white;
+  cursor: pointer;
+  padding: 10px 15px;
+  margin-right: 15px; /* Empurra a logo um pouco para o lado */
+  transition: transform 0.2s ease, background-color 0.3s ease;
+}
+
+.hamburger:hover {
+  transform: scale(1.1);
+  background-color: #777; /* Efeito de hover original */
+}
+
+/* =========================================
+   BARRA DE BUSCA
+========================================= */
+header .search-bar {
+  flex-grow: 1; /* Ocupa o espaço central do header */
+  display: flex;
+  justify-content: center;
+  padding: 0 20px;
+}
+
+header .search-bar input {
+  width: 100%;
+  max-width: 600px;
+  padding: 15px 30px; /* Padding original mais encorpado */
+  border: none;
+  border-radius: 25px;
+  font-size: 1rem;
+  color: white;
+  background-color: var(--fundo-card); /* Corresponde ao seu #444 */
+  outline: none;
+}
+
+/* Efeito sutil ao clicar na barra de busca */
+header .search-bar input:focus {
+  filter: brightness(1.2);
+}
+
+/* =========================================
+   MENU LATERAL (SIDEBAR)
+========================================= */
+.sidebar {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: rgba(68, 68, 68, 0.98);
+  backdrop-filter: blur(6px);
+  overflow-x: hidden;
+  transition: 0.4s;
+  padding-top: 60px;
+  box-shadow: 4px 0 10px rgba(0,0,0,0.6);
+  z-index: 1000;
+  border-radius: 0 5px 5px 0;
+}
+
+.sidebar a {
+  display: block;
+  padding: 15px 25px;
+  margin: 10px;
+  color: white;
+  font-size: 20px;
+  border-radius: 12px;
+  transition: 0.3s;
+}
+
+.sidebar a:hover {
+  background: linear-gradient(135deg, var(--laranja-caju), var(--amarelo-caju));
+  color: #222;
+  transform: translateX(5px);
+}
+
+.close-btn {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  font-size: 36px;
+  color: #fff;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.close-btn:hover {
+  color: var(--amarelo-caju);
+}
+
+/* =========================================
+   PÁGINA INICIAL (HOME)
+========================================= */
+.hero {
+  background-color: var(--fundo-card);
+  padding: 40px 20px;
+}
+
+.hero-cards {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.hero-right {
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  gap: 20px;
+}
+
+.hero-card {
+  background: linear-gradient(135deg, var(--laranja-caju), var(--amarelo-caju));
+  border-radius: 12px;
+  padding: 20px;
+  color: white;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.5);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.games-header {
+  padding-left: 30px;
+  margin-top: 20px;
+}
+
+.games-header h2 {
+  font-size: 2.5rem;
+}
+
+.games-header .line {
+  width: 99%;
+  height: 2px;
+  background: linear-gradient(135deg, var(--laranja-caju), var(--amarelo-caju));
+  margin: 10px auto;
+  border-radius: 2px;
+}
+
+.games-gallery {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 25px;
+  padding: 20px;
+  margin-top: 20px;
+}
+
+.game {
+  background-color: var(--fundo-card);
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.game:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.8);
+}
+
+.game img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-bottom: 3px solid var(--laranja-caju);
+}
+
+/* =========================================
+   PÁGINA DO JOGO (GAME PLAYER)
+========================================= */
+.game-player {
+  position: relative;
+  background-color: #222;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 0 15px rgba(0,0,0,0.5);
+  margin-bottom: 30px;
+}
+
+.game-player iframe {
+  width: 100%;
+  height: 100%; /* Mudamos de 500px para 100% */
+  border: none;
+  display: block;
+}
+
+.favorite-btn {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background-color: rgba(255,255,255,0.8);
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  font-size: 1.2em;
+  color: red;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.favorite-btn:hover {
+  transform: scale(1.1);
+}
+
+.game-info h2 {
+  font-size: 2.2em;
+  color: var(--laranja-caju);
+  margin-bottom: 10px;
+}
+
+.game-info p {
+  font-size: 1.1em;
+  color: #ddd;
+  margin-bottom: 20px;
+}
+
+.buttons {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.related {
+  margin-top: 40px;
+}
+
+.related h3 {
+  font-size: 1.8em;
+  margin-bottom: 20px;
+  color: var(--laranja-caju);
+}
+
+.related-games {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.related-game {
+  flex: 1 1 calc(25% - 20px);
+  background-color: #555;
+  border-radius: 10px;
+  overflow: hidden;
+  text-align: center;
+  transition: transform 0.3s ease;
+  cursor: pointer;
+}
+
+.related-game:hover {
+  transform: translateY(-5px);
+}
+
+.related-game img {
+  width: 100%;
+  height: 140px;
+  object-fit: cover;
+}
+
+.related-game p {
+  padding: 10px;
+  color: #fff;
+}
+
+/* =========================================
+   PÁGINA SOBRE
+========================================= */
+.sobre-hero {
+  background: linear-gradient(135deg, var(--laranja-caju), var(--amarelo-caju));
+  color: white;
+  padding: 40px;
+  text-align: center;
+}
+
+.sobre-hero h2 {
+  font-size: 3rem;
+  font-weight: bold;
+  color: #FFF;
+}
+
+.sobre-hero p {
+  font-size: 1.4rem;
+  margin-top: 20px;
+  font-style: italic;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.intro {
+  background-color: #555;
+  padding: 40px;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.intro h2 {
+  font-size: 2.5em;
+  color: var(--laranja-caju);
+  margin-bottom: 20px;
+}
+
+.intro p {
+  font-size: 1.2em;
+  color: #ddd;
+}
+
+.timeline {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 50px;
+  gap: 20px;
+}
+
+.timeline div {
+  flex: 1;
+  background-color: #555;
+  padding: 30px;
+  border-radius: 8px;
+  text-align: center;
+  color: #f0f0f0;
+  transition: transform 0.3s ease;
+}
+
+.timeline div:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
+}
+
+.team {
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 60px;
+  gap: 30px;
+}
+
+.team .member {
+  text-align: center;
+  flex-basis: 45%;
+  transition: transform 0.3s ease;
+}
+
+.team .member:hover {
+  transform: scale(1.05);
+}
+
+.team .member img {
+  border-radius: 50%;
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border: 5px solid var(--laranja-caju);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* =========================================
+   RODAPÉ (FOOTER)
+========================================= */
+footer {
+  background-color: #222;
+  color: white;
+  text-align: center;
+  padding: 20px;
+  font-size: 0.9rem;
+  margin-top: 50px;
+  width: 100%;
+}
+
+footer p {
+  letter-spacing: 1px;
+}
+
+/* =========================================
+   RESPONSIVIDADE (MOBILE)
+========================================= */
+@media screen and (max-width: 1200px) {
+  .games-gallery {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .games-gallery {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .hero-cards {
+    grid-template-columns: 1fr;
+  }
+  .timeline, .team {
+    flex-direction: column;
+    gap: 30px;
+  }
+  .team .member {
+    flex-basis: 100%;
+  }
+  .related-game {
+    flex: 1 1 100%;
+  }
+  header nav {
+    margin-top: 10px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .games-gallery {
+    grid-template-columns: 1fr;
+  }
 }
