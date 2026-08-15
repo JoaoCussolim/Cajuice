@@ -805,6 +805,132 @@ header .search-bar input:focus {
   }
 }
 
+/* =========================
+   COLABORADORES
+========================= */
+
+.collaborators-section {
+  margin-top: 80px;
+}
+
+.collaborators-section .section-header {
+  margin-bottom: 32px;
+}
+
+.collaborators-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 28px;
+}
+
+.collaborators-grid .member {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+
+  padding: 24px;
+  border-radius: 18px;
+
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+
+  transition:
+    transform 0.25s ease,
+    border-color 0.25s ease,
+    background 0.25s ease;
+}
+
+.collaborators-grid .member:hover {
+  transform: translateY(-4px);
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
+.collaborators-grid .member-image {
+  width: 130px;
+  min-width: 130px;
+  height: 130px;
+
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.collaborators-grid .member-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.collaborators-grid .member-content {
+  flex: 1;
+}
+
+.collaborators-grid .member-content h3 {
+  margin: 0 0 10px;
+
+  font-size: 1.35rem;
+  font-weight: 700;
+}
+
+.collaborators-grid .member-content p {
+  margin: 0;
+
+  line-height: 1.65;
+  opacity: 0.8;
+}
+
+
+/* Deixa o último colaborador centralizado
+   quando existem 5 membros */
+.collaborators-grid .member:last-child:nth-child(odd) {
+  grid-column: 1 / -1;
+  width: calc(50% - 14px);
+  justify-self: center;
+}
+
+
+/* =========================
+   RESPONSIVIDADE
+========================= */
+
+@media (max-width: 900px) {
+  .collaborators-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .collaborators-grid .member:last-child:nth-child(odd) {
+    grid-column: auto;
+    width: 100%;
+  }
+}
+
+@media (max-width: 600px) {
+  .collaborators-section {
+    margin-top: 56px;
+  }
+
+  .collaborators-grid {
+    gap: 20px;
+  }
+
+  .collaborators-grid .member {
+    flex-direction: column;
+    align-items: flex-start;
+
+    padding: 20px;
+  }
+
+  .collaborators-grid .member-image {
+    width: 100%;
+    height: 220px;
+  }
+
+  .collaborators-grid .member-content h3 {
+    font-size: 1.25rem;
+  }
+}
+
 /* =========================================
    RODAPÉ (FOOTER)
 ========================================= */

@@ -9,7 +9,7 @@ import isabelleImg from '../assets/isabelle.png';
 import grabalosImg from '../assets/grabalos.png';
 
 export default function Sobre() {
-  const fundadores = [
+  const colaboradores = [
     {
       nome: 'João',
       imagem: joaoImg,
@@ -23,10 +23,22 @@ export default function Sobre() {
         'Desenvolvedor e um dos fundadores do Cajuice, responsável pelos jogos: Flappy Piece, Fruit Dash, Catsteroids, Codebot, Pachislot Machine Simulator e League Royal.',
     },
     {
+      nome: 'Isabelle',
+      imagem: isabelleImg,
+      descricao:
+        'Responsável pela parte criativa e visual de novos projetos, contribuindo principalmente para a identidade do design atual, ajudando a moldar a experiência visual do Cajuice.',
+    },
+    {
       nome: 'Clara',
       imagem: claraImg,
       descricao:
         'Principal designer inicial do projeto, responsável pela criação da identidade visual "beta" e responsável pelas principais artes 2D de Fruits vs Ants.',
+    },
+    {
+      nome: 'Grabalos',
+      imagem: grabalosImg,
+      descricao:
+        'Uma das principais inspirações para o projeto. Foi um grande líder e professor para todos nós, nos ensinando o essencial para poder começar a criar nossos próprios jogos. Toda base do projeto foi feita em homenagem a ele, pois ele adora cajus.',
     },
   ];
 
@@ -78,8 +90,10 @@ export default function Sobre() {
           <h2>Sobre o Cajuice</h2>
 
           <p>
-            O Cajuice nasceu com a proposta de reunir jogos simples e rápidos em um único lugar. O objetivo nunca foi alcançar algo grande,
-            só jogos divertidos criados entre amigos que possam ser vistos por outras pessoas.
+            O Cajuice nasceu com a proposta de reunir jogos simples e rápidos em
+            um único lugar. O objetivo nunca foi alcançar algo grande, só jogos
+            divertidos criados entre amigos que possam ser vistos por outras
+            pessoas.
           </p>
         </section>
 
@@ -102,96 +116,39 @@ export default function Sobre() {
             </p>
 
             <p>
-              Desde então, o Cajuice eventualmente recebe atualizações,
-              com novos jogos e pequenos ajustes. O objetivo não é alcançar
-              uma grande audiência, mas sim criar um espaço memorável do que
+              Desde então, o Cajuice eventualmente recebe atualizações, com
+              novos jogos e pequenos ajustes. O objetivo não é alcançar uma
+              grande audiência, mas sim criar um espaço memorável do que
               construimos enquanto estudávamos juntos.
             </p>
           </div>
         </section>
 
-        {/* Fundadores */}
-        <section className="about-section founders-section">
+        {/* Colaboradores */}
+        <section className="about-section collaborators-section">
           <div className="section-header">
             <span className="section-label">EQUIPE</span>
-            <h2>Fundadores</h2>
+            <h2>Colaboradores</h2>
           </div>
 
-          <div className="members-grid founders-grid">
-            {fundadores.map((fundador) => (
-              <article className="member" key={fundador.nome}>
+          <div className="members-grid collaborators-grid">
+            {colaboradores.map((colaborador) => (
+              <article className="member" key={colaborador.nome}>
                 <div className="member-image">
                   <img
-                    src={fundador.imagem}
-                    alt={`${fundador.nome}, fundador do Cajuice`}
+                    src={colaborador.imagem}
+                    alt={`${colaborador.nome}, colaborador do Cajuice`}
                   />
                 </div>
 
                 <div className="member-content">
-                  <h3>{fundador.nome}</h3>
-                  <p>{fundador.descricao}</p>
+                  <h3>{colaborador.nome}</h3>
+                  <p>{colaborador.descricao}</p>
                 </div>
               </article>
             ))}
           </div>
         </section>
-
-        {/* Inspiração + Designer */}
-        <div className="secondary-sections">
-          {/* Inspiração */}
-          <section className="about-section inspiration-section">
-            <div className="section-header">
-              <span className="section-label">INSPIRAÇÃO</span>
-              <h2>Inspiração</h2>
-            </div>
-
-            <article className="member featured-member">
-              <div className="member-image">
-                <img
-                  src={grabalosImg}
-                  alt="Grabalos, inspiração do projeto Cajuice"
-                />
-              </div>
-
-              <div className="member-content">
-                <h3>Grabalos</h3>
-
-                <p>
-                  Uma das principais inspirações para o projeto. Foi um grande líder e professor
-                  para todos nós, nos ensinando o essencial para poder começar a criar nossos próprios jogos.
-                  Toda base do projeto foi feita em homenagem a ele, pois ele adora cajus.
-                </p>
-              </div>
-            </article>
-          </section>
-
-          {/* Designer */}
-          <section className="about-section designer-section">
-            <div className="section-header">
-              <span className="section-label">DESIGN</span>
-              <h2>Designer</h2>
-            </div>
-
-            <article className="member featured-member">
-              <div className="member-image">
-                <img
-                  src={isabelleImg}
-                  alt="Isabelle, designer do Cajuice"
-                />
-              </div>
-
-              <div className="member-content">
-                <h3>Isabelle</h3>
-
-                <p>
-                  Responsável pela parte criativa e visual de novos projetos,
-                  contribuindo principalmente para a identidade do design atual, ajudando a moldar
-                  a experiência visual do Cajuice.
-                </p>
-              </div>
-            </article>
-          </section>
-        </div>
 
         {/* Créditos */}
         <section className="credits-section">
