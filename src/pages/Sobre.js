@@ -78,6 +78,21 @@ export default function Sobre() {
       texto: 'Possui todos os direitos do Clash Royale (Utilizado como inspiração para League Royal).',
       link: 'https://supercell.com',
     },
+    {
+      nome: 'Pixelsnorf',
+      texto: 'Modelos de slime do Slime Jumper.',
+      link: 'https://pixelsnorf.itch.io/platformer-slimes',
+    },
+    {
+      nome: 'Ma9ici4n',
+      texto: 'Modelos de tiles de grama do Slime Jumper.',
+      link: 'https://ma9ici4n.itch.io/grass-tileset-pixel-art',
+    },
+    {
+      nome: 'Jennpixel',
+      texto: 'Modelo das flores utilizadas em Slime Jumper.',
+      link: 'https://jennpixel.itch.io/free-flower-pack-12-icons',
+    },
   ];
 
   return (
