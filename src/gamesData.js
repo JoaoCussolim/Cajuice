@@ -7,6 +7,7 @@ import FruitsVsAntsLogo from "./assets/fruitVsAntsLogo.png";
 import CodebotLogo from "./assets/codebotLogo.png";
 import PachislotLogo from "./assets/pachislotLogo.png";
 import LeagueRoyalLogo from "./assets/leagueRoyalLogo.png";
+import SlimeJumperLogo from "./assets/slimeJumperLogo.png";
 
 export const gamesData = [
     {
@@ -89,5 +90,14 @@ export const gamesData = [
         gameUrl: "https://league-royal.vercel.app",
         width: 1280, // Adicionado
         height: 900  // Adicionado
+    },
+    {
+        id: 10,
+        title: "Slime Jumper",
+        description: "Uma jornada simples e um pouco desafiadora que revela uma lição de vida.",
+        imageUrl: SlimeJumperLogo,
+        gameUrl: "https://jumper-slime.vercel.app",
+        width: 1280, // Adicionado
+        height: 775  // Adicionado
     },
 ];
