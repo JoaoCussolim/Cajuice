@@ -20,7 +20,7 @@ export default function Sobre() {
       nome: 'Rafa',
       imagem: rafaImg,
       descricao:
-        'Desenvolvedor e um dos fundadores do Cajuice, responsável pelos jogos: Flappy Piece, Fruit Dash, Catsteroids, Codebot, Pachislot Machine Simulator e League Royal.',
+        'Desenvolvedor e um dos fundadores do Cajuice, responsável pelos jogos: Flappy Piece, Fruit Dash, Catsteroids, Codebot, Pachislot Machine Simulator, League Royal e Geometry Souls.',
     },
     {
       nome: 'Isabelle',

@@ -8,6 +8,7 @@ import CodebotLogo from "./assets/codebotLogo.png";
 import PachislotLogo from "./assets/pachislotLogo.png";
 import LeagueRoyalLogo from "./assets/leagueRoyalLogo.png";
 import SlimeJumperLogo from "./assets/slimeJumperLogo.png";
+import GeometrySoulsLogo from "./assets/geometrySoulsLogo.png";
 
 export const gamesData = [
     {
@@ -99,5 +100,14 @@ export const gamesData = [
         gameUrl: "https://jumper-slime.vercel.app",
         width: 1280, // Adicionado
         height: 775  // Adicionado
+    },
+    {
+        id: 11,
+        title: "Geometry Souls",
+        description: "Enfrente perigos desafiadores da geometria.",
+        imageUrl: GeometrySoulsLogo,
+        gameUrl: "https://geometry-souls.vercel.app",
+        width: 1860, // Adicionado
+        height: 1200  // Adicionado
     },
 ];
