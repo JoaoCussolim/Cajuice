@@ -441,6 +441,33 @@ header .search-bar input:focus {
   color: #fff;
 }
 
+.fullscreen-exit-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+
+    width: 45px;
+    height: 45px;
+
+    border: none;
+    border-radius: 50%;
+
+    background: rgba(0, 0, 0, 0.65);
+    color: white;
+
+    font-size: 22px;
+    cursor: pointer;
+
+    z-index: 100;
+
+    opacity: 0.5;
+    transition: opacity 0.2s ease;
+}
+
+.fullscreen-exit-btn:hover {
+    opacity: 1;
+}
+
 /* =========================================
    PÁGINA SOBRE
 ========================================= */
