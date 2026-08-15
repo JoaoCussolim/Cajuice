@@ -14,7 +14,7 @@ export default function Sobre() {
       nome: 'João',
       imagem: joaoImg,
       descricao:
-        'Desenvolvedor e um dos fundadores do Cajuice, responsável pela criação do Capybara Evolution, Fruits vs Ants e Boss Slayer.',
+        'Desenvolvedor e um dos fundadores do Cajuice, responsável pela criação do Capybara Evolution, Fruits vs Ants, Boss Slayer e Slime Jumper.',
     },
     {
       nome: 'Rafa',
