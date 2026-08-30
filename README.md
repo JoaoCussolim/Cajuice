@@ -1,70 +1,49 @@
-# Getting Started with Create React App
+# Cajuice
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Cajuice is a web platform created to host and showcase original browser-based games.
 
-## Available Scripts
+The website itself was built with React, while each game is hosted separately and loaded into the platform through an `iframe`. This keeps the games independent from the main website and allows each one to be developed and deployed as its own project.
 
-In the project directory, you can run:
+## How It Works
 
-### `npm start`
+Each game is created as an independent web application and then embedded inside Cajuice.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Instead of relying on a ready-made game engine, the games are built mainly with JavaScript and the HTML5 Canvas API, using custom logic for systems such as:
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- Movement
+- Collision detection
+- Game loops
+- Physics
+- Animations
+- Controls
+- State management
 
-### `npm test`
+The goal of the project is to explore game development fundamentals by implementing these systems directly in code.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Architecture
 
-### `npm run build`
+Cajuice works as a central hub for the games.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- **React** is used to build the platform interface.
+- Individual games are hosted separately.
+- Games are displayed inside the platform using `iframe`.
+- Each game can be maintained independently from the main website.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Technologies
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- React
+- JavaScript
+- HTML5
+- CSS3
+- HTML5 Canvas
+- iframe integration
 
-### `npm run eject`
+## Games
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+The platform includes different original browser games developed as separate projects.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Most of them were created without a traditional game engine, focusing instead on manually implemented gameplay logic, physics, collision systems, and rendering.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## Purpose
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Cajuice was created both as a game platform and as a way to experiment with browser-based game development, especially the fundamentals normally handled automatically by game engines.
